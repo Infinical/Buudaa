@@ -26,19 +26,19 @@ jobs:
       - run: mix local.hex --force
       - run: mix local.rebar --force
 
-    - restore_cache:
+      - restore_cache:
           keys:
             - v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
             - v1-mix-cache-{{ .Branch }}
             - v1-mix-cache
 
-    - restore_cache:
+      - restore_cache:
           keys:
             - v1-build-cache-{{ .Branch }}
             - v1-build-cache
 
-     - run: mix do deps.get, compile
-    - save_cache:
+      - run: mix do deps.get, compile
+      - save_cache:
           key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
           paths: "deps"
       - save_cache:
@@ -61,4 +61,3 @@ jobs:
       - run: mix test
       - store_test_results:
           path: _build/test/lib/nailanda
-
