@@ -60,4 +60,4 @@ jobs:
       # specify any bash command here prefixed with `run: `
       - run: mix test
       - store_test_results:
-          path: _build/test/lib/nailanda
+          path: _build/test/lib/buudaa
